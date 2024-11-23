@@ -105,7 +105,7 @@ class CurrentLocationLayer extends StatefulWidget {
   CurrentLocationLayer({
     super.key,
     this.style = const LocationMarkerStyle(),
-    Stream<LocationMarkerPosition?>? positionStream,
+    required this.positionStream,
     Stream<LocationMarkerHeading?>? headingStream,
     this.followScreenPoint = _originPoint,
     this.followScreenPointOffset = _originPoint,
@@ -122,10 +122,7 @@ class CurrentLocationLayer extends StatefulWidget {
     this.rotateAnimationDuration = const Duration(milliseconds: 200),
     this.rotateAnimationCurve = Curves.easeInOut,
     this.indicators = const LocationMarkerIndicators(),
-  })  : positionStream = positionStream ??
-            const LocationMarkerDataStreamFactory()
-                .fromGeolocatorPositionStream(),
-        headingStream = headingStream ??
+  }) : headingStream = headingStream ??
             const LocationMarkerDataStreamFactory().fromCompassHeadingStream();
 
   @override
